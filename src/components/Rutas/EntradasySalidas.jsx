@@ -76,4 +76,4 @@ const EntradasySalidas = () => {
     )
   }
   
-  export default EntradasySalidas
+  export default EntradasySalidas;

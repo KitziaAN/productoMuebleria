@@ -203,4 +203,4 @@ const Productos = () => {
     )
   }
   
-  export default Productos
+  export default Productos;

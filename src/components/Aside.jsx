@@ -5,7 +5,7 @@ const Aside = () => {
       <aside className="main-sidebar sidebar-dark-primary elevation-4">
       
   <div class="brand-link d-flex justify-content-between align-items-center">
-  <a class="brand-link" href="index3.html">
+  <a class="brand-link" href="index.html">
   {/* <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"> */}
   <span class="brand-text font-weight-light">MUEBLERIA UTP</span>
   </a>

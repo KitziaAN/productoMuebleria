@@ -1,17 +1,16 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import EntradasySalidas from './Rutas/EntradasySalidas';
+import UsuariosMostrar from './Rutas/UsuariosMostrar';
 
-
-const EyScontent = () => {
+const ContUsuariosM = () => {
   return (
     <>
         <Navbar/>
-        <EntradasySalidas/>
         <Footer/>
-        </>
+        <UsuariosMostrar/>
+    </>
   )
 }
 
-export default EyScontent;
+export default ContUsuariosM

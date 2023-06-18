@@ -47,4 +47,4 @@ const CategoriasMostrar = () => {
   )
 }
 
-export default CategoriasMostrar
+export default CategoriasMostrar;

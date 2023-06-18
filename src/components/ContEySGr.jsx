@@ -1,17 +1,16 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import EntradasySalidas from './Rutas/EntradasySalidas';
+import GraficasEyS from './Rutas/GraficasEyS';
 
-
-const EyScontent = () => {
+const ContEySGr = () => {
   return (
     <>
         <Navbar/>
-        <EntradasySalidas/>
+        <GraficasEyS/>
         <Footer/>
-        </>
+    </>
   )
 }
 
-export default EyScontent;
+export default ContEySGr

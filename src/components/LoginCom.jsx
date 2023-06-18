@@ -1,17 +1,17 @@
+import React from 'react';
 import Footer from './Footer';
 import Navbar from './Navbar';
-import Productos from './Rutas/Productos';
+import Login from './Rutas/Login';
 
-
-const Procontent = () => {
+const LoginCom = () => {
   return (
     <>
         <Navbar/>
-        <Productos/>
+        <Login/>
         <Footer/>
 
     </>
   )
 }
 
-export default Procontent
+export default LoginCom;

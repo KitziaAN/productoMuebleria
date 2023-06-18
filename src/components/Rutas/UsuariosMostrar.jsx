@@ -1,4 +1,4 @@
-const Usuarios = () => {
+const UsuariosMostrar = () => {
     return (
       <>
       <div class="content-wrapper">
@@ -58,4 +58,4 @@ const Usuarios = () => {
     )
   }
   
-  export default Usuarios
+  export default UsuariosMostrar;

@@ -79,4 +79,4 @@ const ProductoMostrar = () => {
   )
 }
 
-export default ProductoMostrar
+export default ProductoMostrar;

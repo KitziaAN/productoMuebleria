@@ -12,4 +12,4 @@ const Graficas = () => {
   );
 };
 
-export default Graficas
+export default Graficas;

@@ -3,7 +3,7 @@ const Header = () => {
     <>
     <nav className="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div className="container">
-      <a href="../../index3.html" className="navbar-brand">
+      <a href="../../index.html" className="navbar-brand">
         
         <span className="brand-text font-weight-light">AdminLTE 3</span>
       </a>
@@ -16,7 +16,7 @@ const Header = () => {
          
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a href="index3.html" className="nav-link">Home</a>
+            <a href="index.html" className="nav-link">Home</a>
           </li>
           <li className="nav-item">
             <a href="#" className="nav-link">Contact</a>

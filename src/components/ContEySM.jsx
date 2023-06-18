@@ -1,16 +1,16 @@
 import React from 'react'
-import Usuarios from './Rutas/Usuarios';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import EntradasySalidasMostrar from './Rutas/EntradasySalidasMostrar';
 
-const Uscontent = () => {
+const ContEySM = () => {
   return (
     <>
         <Navbar/>
-        <Usuarios/>
+        <EntradasySalidasMostrar/>
         <Footer/>
     </>
   )
 }
 
-export default Uscontent;
+export default ContEySM;
