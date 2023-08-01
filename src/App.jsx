@@ -16,6 +16,7 @@ import RutaViewProductos from './Rutas/RutaViewProductos';
 import RutaViewCategorias from './Rutas/RutaViewCategorias';
 import RutaViewUsuarios from './Rutas/RutaViewUsuarios';
 import RutaViewEYS from './Rutas/RutaViewEYS';
+import RutaViewEYSGrafica from './Rutas/RutaViewEYSGrafica';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path='/MostrarCategorias' element={<RutaViewCategorias />} />
         <Route path='/MostrarUsuarios' element={<RutaViewUsuarios />} />
         <Route path='/MostrarEYS' element={<RutaViewEYS />} />
+        <Route path='/MostrarEYSGrafica' element={<RutaViewEYSGrafica />} />
         <Route path='/MostrarLogin' element={<MostrarLogin />} />
         
     </Routes>
