@@ -1,44 +1,45 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import LoginCom from './components/LoginCom';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ContBienvenida from './components/ContBienvenida';
-import Content from './components/Content';
-import ContCategoriasM from './components/ContCategoriasM';
-import EyScontent from './components/EyScontent';
-import ContEySM from './components/ContEySM';
-import ContEySGr from './components/ContEySGr';
-import Procontent from './components/Procontent';
-import ContProductosM from './components/ContProductosM';
-import Uscontent from './components/Usucontent';
-import ContUsuariosM from './components/ContUsuariosM';
+// Mostrar Bienvenida y Login
+import MostrarBienvenida from './Rutas/MostrarBienvenida';
+import MostrarLogin from './Rutas/MostrarLogin';
 
+// Importar componentes de ruta POST
+import RutaPostProductos from './Rutas/RutaPostProductos';
+import RutaPostCategorias from './Rutas/RutaPostCategorias';
+import RutaPostUsuarios from './Rutas/RutaPostUsuarios';
+import RutaPostEYS from './Rutas/RutaPostEYS';
+
+// Importar componentes de ruta VIEW
+import RutaViewProductos from './Rutas/RutaViewProductos';
+import RutaViewCategorias from './Rutas/RutaViewCategorias';
+import RutaViewUsuarios from './Rutas/RutaViewUsuarios';
+import RutaViewEYS from './Rutas/RutaViewEYS';
 
 const App = () => {
-
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-        <Route exact path='/Bienvenida' element={<ContBienvenida/>} /> 
-        <Route path='/' element={<Content/>} /> 
-        <Route path='/MostrarCategorias' element={<ContCategoriasM/>} /> 
-        <Route path='/EyS' element={<EyScontent/>} /> 
-        <Route path='/Procontent' element={<Procontent/>} /> 
-        <Route path='/MostrarProductos' element={<ContProductosM/>} /> 
-        <Route path='/MostrarEyS' element={<ContEySM/>} /> 
-        <Route path='/GraficasEyS' element={<ContEySGr/>} /> 
-        <Route path='/Uscontent' element={<Uscontent/>} /> 
-        <Route path='/MostrarUsuarios' element={<ContUsuariosM/>} /> 
-        <Route path='/Login' element={<LoginCom/>} /> 
+    <BrowserRouter>
+    <Routes>
+      
+        {/* Rutas POST */}
+        <Route path='/' element={<MostrarBienvenida />} />
+        <Route path='/Bienvenida' element={<MostrarBienvenida />} />
+        <Route path='/InsertarProductos' element={<RutaPostProductos />} />
+        <Route path='/InsertarCategorias' element={<RutaPostCategorias />} />
+        <Route path='/InsertarUsuarios' element={<RutaPostUsuarios />} />
+        <Route path='/InsertarEYS' element={<RutaPostEYS />} />
 
-
-        </Routes>
-      </BrowserRouter>
+        {/* Rutas VIEW */}
+        <Route path='/MostrarProductos' element={<RutaViewProductos />} />
+        <Route path='/MostrarCategorias' element={<RutaViewCategorias />} />
+        <Route path='/MostrarUsuarios' element={<RutaViewUsuarios />} />
+        <Route path='/MostrarEYS' element={<RutaViewEYS />} />
+        <Route path='/MostrarLogin' element={<MostrarLogin />} />
         
-    </>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
-
-export default App;
-
+export default App
