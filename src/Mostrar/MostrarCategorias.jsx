@@ -1,6 +1,24 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 
 const MostrarCategorias = () => {
+    const [data, setData] = useState([]);
+    
+    useEffect(()=>{
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+          };
+        fetch("http://localhost/muebleria-backend/index.php/Api/Categorias/", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+        setData(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+    }, []);   
+
   return (
     <>
         <div class="wrapper">
@@ -26,14 +44,15 @@ const MostrarCategorias = () => {
 
                         <tbody>
                             {/* Datos dentro de la Tabla */}
-                        <tr>
-                           <td>345345</td>
-                           <td>Mesas</td>
-                           <td>22/09/2022</td>
-                        </tr>
-
+                            {data.map(item =>(
+                                <tr key={item.codigo_categoria}>
+                                    <td>{item.codigo_categoria}</td>
+                                    <td>{item.tipo}</td>
+                                    <td>{item.fecha_alta}</td>
+                                </tr>
+                            ))}
                         </tbody>
-                    </table>
+                    </table>    
                     </div>
                 </div>
                 </div>
