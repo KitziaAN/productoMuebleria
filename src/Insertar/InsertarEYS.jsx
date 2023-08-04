@@ -1,6 +1,31 @@
 import React from 'react';
+import { useState } from 'react';
 
 const InsertarEYS = () => {
+  const [codigoProducto, setCodigoProducto] = useState('');
+  const [fecha, setFecha] = useState('');
+
+  const handleAdd = () => {
+    console.log(codigoProducto, fecha);
+    var formdata = new FormData();
+    formdata.append("codigo_producto", codigoProducto);
+    formdata.append("fecha", fecha);
+
+    var requestOptions = {
+      mode: 'no-cors',
+      header: {
+        'Content-Type' : 'application/json; charset=UTF-8'
+      },
+      method: 'POST',
+      body: formdata,
+    };
+
+    fetch("http://localhost/muebleria-backend/index.php/Api/EntradasYSalidas", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+  }
+
   return (
     <>
       <div className="container-fluid">
@@ -15,30 +40,25 @@ const InsertarEYS = () => {
 
               <form>
                 <div className="card-body">
-                  {/* Codigo Producto */}
-                  <div className="form-group">
-                    <label for="CodigoProducto">Codigo Producto</label>
-                    <input type="email" className="form-control" id="CodigoProducto" placeholder="Codigo Producto" />
-                  </div>
-                  {/*  */}
-
                   {/* Fecha de Entrada */}
                   <div className="form-group">
-                    <label for="FechaEntrada">Fecha de Entrada</label>
-                    <input type="date" className="form-control" id="FechaEntrada" placeholder="Fecha de Entrada" />
+                    <label for="CodigoProducto">Codigo Producto</label>
+                    <input type="text" className="form-control" placeholder="Código producto" 
+                    value={ codigoProducto } onChange={ event => setCodigoProducto (event.target.value )}/>
                   </div>
                   {/*  */}
 
                   {/* Fecha de Salida */}
                   <div className="form-group">
-                    <label for="FechaSalida">Fecha de Salida</label>
-                    <input type="date" className="form-control" id="FechaSalida" placeholder="Fecha de Salida" />
+                    <label for="FechaSalidaEntrada">Fecha Salida/Entrada</label>
+                    <input type="date" className="form-control" placeholder="Fecha de Salida"
+                    value={ fecha } onChange={ event => setFecha (event.target.value )} />
                   </div>
                   {/*  */}
 
                 </div>
                 <div className="card-footer">
-                  <button type="submit" className="btn btn-success">Confirmar</button>
+                  <button className="btn btn-success" onClick={ () => handleAdd() }>Confirmar</button>
                 </div>
               </form>
             </div>
