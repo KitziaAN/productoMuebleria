@@ -1,6 +1,24 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 
 const MostrarProductos = () => {
+    const [data, setData] = useState([]);
+    
+    useEffect(()=>{
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+          };
+        fetch("http://localhost/muebleria-backend/index.php/Api/Productos", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+        setData(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+    }, []);
+
   return (
     <>
         <div class="wrapper">
@@ -20,6 +38,7 @@ const MostrarProductos = () => {
                         <tr>
                             <th>C.Producto</th>
                             <th>C.Categoria</th>
+                            <th>Marca</th>
                             <th>Nombre</th>
                             <th>Piezas</th>
                             <th>Color</th>
@@ -29,26 +48,29 @@ const MostrarProductos = () => {
                             <th>Precio</th>
                             <th>Descripcion</th>
                             <th>Fecha de alta</th>
-                            <th>Documento</th>
+                            <th>Fotografías</th>
                         </tr>
                         </thead>
 
                         <tbody>
                             {/* Datos dentro de la Tabla */}
-                        <tr>
-                            <td>657657</td>
-                            <td>345345</td>
-                            <td>Mesa de Billar</td>
-                            <td>1</td>
-                            <td>Verde</td>
-                            <td>Madera</td>
-                            <td>12</td>
-                            <td>2.5 mt x 2 mt</td>
-                            <td>$28 000</td>
-                            <td>Tacos incluidos</td>
-                            <td>12/10/2022</td>
-                            <td>Billar.jpg</td>
-                        </tr>
+                            {data.map(item =>(
+                                <tr key={item.codigo_producto}>
+                                    <td>{item.codigo_producto}</td>
+                                    <td>{item.codigo_categoria}</td>
+                                    <td>{item.marca}</td>
+                                    <td>{item.nombre}</td>
+                                    <td>{item.piezas}</td>
+                                    <td>{item.color}</td>
+                                    <td>{item.material}</td>
+                                    <td>{item.unidades}</td>
+                                    <td>{item.dimensiones}</td>
+                                    <td>{item.precio}</td>
+                                    <td>{item.descripcion}</td>
+                                    <td>{item.fecha_alta}</td>
+                                    <td>{item.fotografias}</td>
+                                </tr>
+                            ))}
 
                         </tbody>
                     </table>

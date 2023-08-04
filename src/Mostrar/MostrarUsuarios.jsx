@@ -1,6 +1,25 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
+
 
 const MostrarUsuarios = () => {
+    const [data, setData] = useState([]);
+    
+    useEffect(()=>{
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+          };
+        fetch("http://localhost/muebleria-backend/index.php/Api/Usuarios", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+        setData(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+    }, []);  
+
   return (
     <>
         <div class="wrapper">
@@ -21,24 +40,26 @@ const MostrarUsuarios = () => {
                             <th>Codigo Empleado</th>
                             <th>Nombre</th>
                             <th>Puesto</th>
+                            <th>Fotografía</th>
                             <th>Usuario</th>
                             <th>Contraseña</th>
-                            <th>Fecha de Entrada</th>
-                            <th>Documento</th>
+                            <th>Fecha de Entrada</th>         
                         </tr>
                         </thead>
 
                         <tbody>
                             {/* Datos dentro de la Tabla */}
-                        <tr>
-                           <td>6576575</td>
-                           <td>Carlos</td>
-                           <td>Subdirector</td>
-                           <td>Administrador</td>
-                           <td>*******</td>
-                           <td>11/11/2022</td>
-                           <td>Zenteno.jpg</td>
-                        </tr>
+                            {data.map(item =>(
+                                <tr key={item.clave_empleado}>
+                                    <td>{item.clave_empleado}</td>
+                                    <td>{item.nombre}</td>
+                                    <td>{item.puesto}</td>
+                                    <td>{item.fotografia}</td>
+                                    <td>{item.usuario}</td>
+                                    <td>{item.contrasena}</td>
+                                    <td>{item.fecha_ingreso}</td>
+                                </tr>
+                            ))}              
 
                         </tbody>
                     </table>

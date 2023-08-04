@@ -1,6 +1,24 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 
 const MostrarEYS = () => {
+    const [data, setData] = useState([]);
+    
+    useEffect(()=>{
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+          };
+        fetch("http://localhost/muebleria-backend/index.php/Api/EntradasYSalidas", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+        setData(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+    }, []);  
+    
   return (
     <>
         <div class="wrapper">
@@ -18,19 +36,21 @@ const MostrarEYS = () => {
                         <thead>
                             {/* Datos de la Tabla */}
                         <tr>
+                            <th>Codigo Entrada/Salida</th>
                             <th>Codigo Producto</th>
-                            <th>Fecha de Entrada</th>
-                            <th>Fecha de Salida</th>
+                            <th>Fecha Entrada/Salida</th>
                         </tr>
                         </thead>
 
                         <tbody>
                             {/* Datos dentro de la Tabla */}
-                        <tr>
-                           <td>657657</td>
-                           <td>12/10/2022</td>
-                           <td>13/10/2022</td>
-                        </tr>
+                            {data.map(item =>(
+                                <tr key={item.codigo_eys}>
+                                    <td>{item.codigo_eys}</td>
+                                    <td>{item.codigo_producto}</td>
+                                    <td>{item.fecha}</td>
+                                </tr>
+                            ))}
 
                         </tbody>
                     </table>
