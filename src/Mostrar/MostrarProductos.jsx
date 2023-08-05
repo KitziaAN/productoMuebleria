@@ -3,20 +3,38 @@ import { useState, useEffect } from 'react';
 
 const MostrarProductos = () => {
     const [data, setData] = useState([]);
-    
-    useEffect(()=>{
+
+    const getProductos=()=>{
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
           };
-        fetch("http://localhost/muebleria-backend/index.php/Api/Productos", requestOptions)
-        .then(response => response.json())
+          fetch("http://localhost/muebleria-backend/index.php/Api/Productos", requestOptions)
+          .then(response => response.json())
         .then(data => {
         setData(data);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
+
+    }
+
+    const deleteProductos= (id) => {
+        var requestOptions = {
+            header:{'Content-Type': 'application/json; charset=utf-8'},
+            method: 'DELETE',
+            redirect: 'follow',
+        };
+          
+          fetch(`http://localhost/muebleria-backend/index.php/Api/Productos/${id}`, requestOptions)
+            .then(response => {if(response.ok){getProductos();}})
+            .then(result => console.log(result))
+            .catch(error => console.log('Tienes un error al borrar: ', error));
+    };
+    
+    useEffect(()=>{
+        getProductos();
     }, []);
 
   return (
@@ -49,6 +67,7 @@ const MostrarProductos = () => {
                             <th>Descripcion</th>
                             <th>Fecha de alta</th>
                             <th>Fotografías</th>
+                            <th>Opciones</th>
                         </tr>
                         </thead>
 
@@ -69,6 +88,7 @@ const MostrarProductos = () => {
                                     <td>{item.descripcion}</td>
                                     <td>{item.fecha_alta}</td>
                                     <td>{item.fotografias}</td>
+                                    <td><button type="button" class="btn btn-outline-dark" onClick={()=> deleteProductos(item.codigo_producto)}>Borrar</button></td>
                                 </tr>
                             ))}
 

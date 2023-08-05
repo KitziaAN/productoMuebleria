@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 
 const MostrarEYS = () => {
     const [data, setData] = useState([]);
-    
-    useEffect(()=>{
+
+    const getEYS = () => {
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -17,6 +17,23 @@ const MostrarEYS = () => {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
+    }
+
+    const deleteEYS = (id) => {
+        var requestOptions = {
+            header:{'Content-Type': 'application/json; charset=utf-8'},
+            method: 'DELETE',
+            redirect: 'follow',
+        };
+
+        fetch(`http://localhost/muebleria-backend/index.php/Api/EntradasYSalidas/${id}`, requestOptions)
+            .then(response => {if(response.ok){getEYS();}})
+            .then(result => console.log(result))
+            .catch(error => console.log('Tienes un error al borrar: ', error));
+    }
+    
+    useEffect(()=>{
+        getEYS();
     }, []);  
     
   return (
@@ -39,6 +56,7 @@ const MostrarEYS = () => {
                             <th>Codigo Entrada/Salida</th>
                             <th>Codigo Producto</th>
                             <th>Fecha Entrada/Salida</th>
+                            <th>Opciones</th>
                         </tr>
                         </thead>
 
@@ -49,6 +67,7 @@ const MostrarEYS = () => {
                                     <td>{item.codigo_eys}</td>
                                     <td>{item.codigo_producto}</td>
                                     <td>{item.fecha}</td>
+                                    <td><button type="button" class="btn btn-outline-dark" onClick={()=> deleteEYS(item.codigo_categoria)}>Borrar</button></td>
                                 </tr>
                             ))}
 

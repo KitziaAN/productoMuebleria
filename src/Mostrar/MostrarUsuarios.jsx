@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 
 const MostrarUsuarios = () => {
     const [data, setData] = useState([]);
-    
-    useEffect(()=>{
+
+    const getUsuarios=()=>{
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
-          };
+        };
         fetch("http://localhost/muebleria-backend/index.php/Api/Usuarios", requestOptions)
         .then(response => response.json())
         .then(data => {
@@ -18,6 +18,23 @@ const MostrarUsuarios = () => {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
+    }
+
+    const deleteUsuarios= (id) => {
+        var requestOptions = {
+            header:{'Content-Type': 'application/json; charset=utf-8'},
+            method: 'DELETE',
+            redirect: 'follow',
+        };
+          
+          fetch(`http://localhost/muebleria-backend/index.php/Api/Usuarios/${id}`, requestOptions)
+            .then(response => {if(response.ok){getUsuarios();}})
+            .then(result => console.log(result))
+            .catch(error => console.log('Tienes un error al borrar: ', error));
+    };
+    
+    useEffect(()=>{
+        getUsuarios();
     }, []);  
 
   return (
@@ -43,7 +60,8 @@ const MostrarUsuarios = () => {
                             <th>Fotografía</th>
                             <th>Usuario</th>
                             <th>Contraseña</th>
-                            <th>Fecha de Entrada</th>         
+                            <th>Fecha de Entrada</th>
+                            <th>Opciones</th>         
                         </tr>
                         </thead>
 
@@ -58,6 +76,7 @@ const MostrarUsuarios = () => {
                                     <td>{item.usuario}</td>
                                     <td>{item.contrasena}</td>
                                     <td>{item.fecha_ingreso}</td>
+                                    <td><button type="button" class="btn btn-outline-dark" onClick={()=> deleteUsuarios(item.codigo_usuario)}>Borrar</button></td>
                                 </tr>
                             ))}              
 

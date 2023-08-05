@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 
 const MostrarCategorias = () => {
     const [data, setData] = useState([]);
-    
-    useEffect(()=>{
+
+    const getCategorias=()=>{
         var requestOptions = {
             method: 'GET',
             redirect: 'follow',
@@ -17,6 +17,24 @@ const MostrarCategorias = () => {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
+
+    }
+
+    const deleteCategorias= (id) => {
+        var requestOptions = {
+            //header:{'Content-Type': 'application/json; charset=utf-8'},
+            method: 'DELETE',
+            redirect: 'follow',
+          };
+          
+          fetch(`http://localhost/muebleria-backend/index.php/Api/Categorias/${id}`, requestOptions)
+            .then(response => {if(response.ok){getCategorias();}})
+            .then(result => console.log(result))
+            .catch(error => console.log('Tienes un error al borrar: ', error));
+    };
+   
+    useEffect(()=>{
+        getCategorias();
     }, []);   
 
   return (
@@ -39,6 +57,7 @@ const MostrarCategorias = () => {
                             <th>Codigo Categoria</th>
                             <th>Tipo</th>
                             <th>Fecha de alta</th>
+                            <th>Opciones</th>
                         </tr>
                         </thead>
 
@@ -49,6 +68,7 @@ const MostrarCategorias = () => {
                                     <td>{item.codigo_categoria}</td>
                                     <td>{item.tipo}</td>
                                     <td>{item.fecha_alta}</td>
+                                    <td><button type="button" class="btn btn-outline-dark" onClick={()=> deleteCategorias(item.codigo_categoria)}>Borrar</button></td>
                                 </tr>
                             ))}
                         </tbody>
