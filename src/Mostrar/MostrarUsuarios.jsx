@@ -72,7 +72,7 @@ const MostrarUsuarios = () => {
                                     <td>{item.clave_empleado}</td>
                                     <td>{item.nombre}</td>
                                     <td>{item.puesto}</td>
-                                    <td>{item.fotografia}</td>
+                                    <td><img src={item.fotografia+"BASE64_STRING"}></img></td>
                                     <td>{item.usuario}</td>
                                     <td>{item.contrasena}</td>
                                     <td>{item.fecha_ingreso}</td>

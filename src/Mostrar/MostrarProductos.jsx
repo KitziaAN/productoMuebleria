@@ -87,7 +87,7 @@ const MostrarProductos = () => {
                                     <td>{item.precio}</td>
                                     <td>{item.descripcion}</td>
                                     <td>{item.fecha_alta}</td>
-                                    <td>{item.fotografias}</td>
+                                    <td><img src={item.fotografias}></img></td>
                                     <td><button type="button" class="btn btn-outline-dark" onClick={()=> deleteProductos(item.codigo_producto)}>Borrar</button></td>
                                 </tr>
                             ))}

@@ -46,6 +46,18 @@ const InsertarProductos = () => {
     .catch(error => console.log('error', error));
   }
 
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        setFotografia(reader.result);       
+      };
+      reader.readAsDataURL(file);
+      console.log(fotografia)
+    }
+  }
+
   
   return (
     <>
@@ -150,14 +162,13 @@ const InsertarProductos = () => {
                     </div>
                   {/*  */}
                   
-                  {/* Subir Documentos */}
+                  {/* Subir Imagen */}
                   <div className="form-group">
-                    <label for="exampleInputFile">Fotografía</label>
+                  <img className='center' src={fotografia} height="300px" width="300px"></img>
                     <div className="input-group">
                       <div className="custom-file">
-                        <input type="file" className="custom-file-input" id="exampleInputFile" 
-                        value={ fotografia } onChange={ event => setFotografia (event.target.value )} />
-                    <label className="custom-file-label" for="exampleInputFile">Selecciona la imagen del producto </label>
+                        <input type="file" accept="image/*" className="custom-file-input" onChange={handleImage} />
+                    <label className="custom-file-label" for="exampleInputFile">Selecciona la imagen del usuario </label>
                       </div>
                     </div>
                   </div>
