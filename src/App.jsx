@@ -24,7 +24,7 @@ const App = () => {
     <Routes>
       
         {/* Rutas POST */}
-        <Route path='/' element={<MostrarBienvenida />} />
+        <Route path='/' element={<MostrarLogin />} />
         <Route path='/Bienvenida' element={<MostrarBienvenida />} />
         <Route path='/InsertarProductos' element={<RutaPostProductos />} />
         <Route path='/InsertarCategorias' element={<RutaPostCategorias />} />
@@ -37,7 +37,6 @@ const App = () => {
         <Route path='/MostrarUsuarios' element={<RutaViewUsuarios />} />
         <Route path='/MostrarEYS' element={<RutaViewEYS />} />
         <Route path='/MostrarEYSGrafica' element={<RutaViewEYSGrafica />} />
-        <Route path='/MostrarLogin' element={<MostrarLogin />} />
         
     </Routes>
     </BrowserRouter>
