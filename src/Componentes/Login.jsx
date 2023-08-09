@@ -1,91 +1,105 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
 const Login = () => {
-  const [data, setData] = useState([]);
-  const [usuario, setusuario] = useState('');
-  const [contrasena, setcontrasena] = useState('');
-  const [siguiente, setsiguiente] = useState('')
 
-  const getUsuario = () => {
+  const [users, setUsers] = useState([]);
+  const [usuario, setUsuario] = useState('');
+  const [contrasena, setContrasena] = useState('');
+  const [siguiente, setSiguiente] = useState('');
+  const [error, setError] = useState('');
+
+  const getUsuarios = () => {
     var requestOptions = {
-            method: 'GET',
-            redirect: 'follow',
-        };
-        fetch(`http://localhost/muebleria-backend/index.php/Api/Usuarios/${usuario}`, requestOptions)
-        .then(response => response.json())
-        .then(data => {
-        setData(data);
-
-        console.log(data);
-        var user = data.usuario;
-        var pass = data.contrasena;
-
-        if(user == usuario && pass==contrasena){
-          setsiguiente="/Bienvenida";
-        }
+      method: 'GET',
+      redirect: 'follow',
+    };
+    fetch("http://localhost/muebleria-backend/index.php/Api/Usuarios/", requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        const extractedUsers = data.map(item => ({
+          usuario: item.usuario,
+          contrasena: item.contrasena
+        }));
+        setUsers(extractedUsers);
+        // Imprimir en la consola
+        console.log("Que mira bobo, andate pasha boludo");
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
   }
 
-  const inicioSesion = () => {
-    var user = data.usuario;
-    var pass = data.contrasena;
 
-    if(user == usuario && pass==contrasena){
-      setsiguiente="/Bienvenida";
-    }
-  }
-
-  useEffect(()=>{
-    getUsuario();
+  useEffect(() => {
+    getUsuarios();
   }, []);
 
-  return (
-    <>
-      <div className="hold-transition login-page">
-        <div className="login-box">
-          <div className="card card-outline card-primary">
-            <div className="card-header text-center">
-              <Link className="h1"><b>Muebleria</b></Link>
-            </div>
-            <div className="card-body">
-              <p className="login-box-msg">No compartas tu contraseña con nadie</p>
+  const handleLogin = () => {
+    const foundUser = users.find(user => user.usuario === usuario && user.contrasena === contrasena);
+    if (foundUser) {
+      setSiguiente('/Bienvenida');
+    } else {
+      setError('Usuario o contraseña incorrectos');
+    }
+  };
 
-              <form action="" method="post">
-                <div className="input-group mb-3">
-                  <input type="text" className="form-control" placeholder="Usuario"
-                  value={ usuario }  onChange={ event => setusuario (event.target.value) }/>
-                  <div className="input-group-append">
-                    <div className="input-group-text">
-                      <span className="fas fa-envelope"></span>
-                    </div>
-                  </div>
-                </div>
-                <div className="input-group mb-3">
-                  <input type="password" className="form-control" placeholder="Contraseña" 
-                  value={ contrasena }  onChange={ event => setcontrasena (event.target.value) }/>
-                  <div className="input-group-append">
-                    <div className="input-group-text">
-                      <span className="fas fa-lock"></span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="social-auth-links text-center mt-2 mb-3">
-                  <button className="btn btn-block btn-success" onClick={ () => getUsuario()}>Iniciar Sesion</button>
-                
-              </div>
-              </form>
+  useEffect(() => {
+    if (siguiente) {
+      window.location.href = siguiente;
+    }
+  }, [siguiente]);
+
+  return (
+    <div className="hold-transition login-page">
+      <div className="login-box">
+        <div className="card card-outline card-primary">
+          <div className="card-header text-center">
+            <h1 className="h1">Muebleria</h1>
+          </div>
+          <div className="card-body">
+            <p className="login-box-msg">Estamos emocionados de verte de nuevo </p>
+            {/* Formulario */}
+            <div className="mb-3">
+              <label htmlFor="usuario" className="form-label">Usuario</label>
+              <input
+                type="text"
+                className="form-control"
+                id="usuario"
+                placeholder='Ingresa tu Usuario'
+                value={usuario}
+                onChange={e => setUsuario(e.target.value)}
+              />
             </div>
+
+            <div className="mb-3">
+              <label htmlFor="contrasena" className="form-label">Contraseña</label>
+              <input
+                type="password"
+                className="form-control"
+                id="contrasena"
+                placeholder='No compartas tu contraseña'
+                value={contrasena}
+                onChange={e => setContrasena(e.target.value)}
+              />
+            </div>
+
+            {/* Mensaje de error */}
+            {error && <div className="alert alert-danger">{error}</div>}
+
+            <button
+              className="btn btn-success mx-auto d-block"
+              style={{ marginTop: '30px' }}
+              onClick={handleLogin}
+            >
+              Iniciar Sesión
+            </button>
+
+            {/* Fin del formulario */}
           </div>
         </div>
       </div>
-
-    </>
+    </div>
   );
 }
 
-export default Login
+export default Login;
