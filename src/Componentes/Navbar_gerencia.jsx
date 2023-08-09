@@ -22,8 +22,6 @@ const Navbar = () => {
                                     className="nav-link dropdown-toggle"> Productos </Link>
                                 <ul aria-labelledby="dropdownSubMenu1"
                                     className="dropdown-menu border-0 shadow">
-                                    <li><Link to="/InsertarProductos" className="dropdown-item">
-                                        Insertar </Link></li>
                                     <li><Link to="/MostrarProductos" className="dropdown-item">
                                         Mostrar
                                     </Link></li>
@@ -37,25 +35,8 @@ const Navbar = () => {
                                     className="nav-link dropdown-toggle"> Categorias </Link>
                                 <ul aria-labelledby="dropdownSubMenu1"
                                     className="dropdown-menu border-0 shadow">
-                                    <li><Link to="/InsertarCategorias" className="dropdown-item">
-                                        Insertar </Link></li>
                                     <li><Link to="/MostrarCategorias" className="dropdown-item">
                                         Mostrar </Link></li>
-                                </ul>
-                            </li>
-
-                            {/* <!-- Usuarios --> */}
-                            <li className="nav-item dropdown">
-                                <Link id="dropdownSubMenu1" to="#" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false"
-                                    className="nav-link dropdown-toggle"> Usuarios </Link>
-                                <ul aria-labelledby="dropdownSubMenu1"
-                                    className="dropdown-menu border-0 shadow">
-                                    <li><Link to="/InsertarUsuarios" className="dropdown-item">
-                                        Insertar </Link></li>
-                                    <li><Link to="/MostrarUsuarios" className="dropdown-item">
-                                        Mostrar
-                                    </Link></li>
                                 </ul>
                             </li>
 
@@ -66,9 +47,6 @@ const Navbar = () => {
                                     className="nav-link dropdown-toggle"> Entradas / Salidas </Link>
                                 <ul aria-labelledby="dropdownSubMenu1"
                                     className="dropdown-menu border-0 shadow">
-                                    <li><Link to="/InsertarEYS" className="dropdown-item">
-                                        Insertar
-                                    </Link></li>
                                     <li><Link to="/MostrarEYS" className="dropdown-item">
                                         Mostrar
                                     </Link></li>

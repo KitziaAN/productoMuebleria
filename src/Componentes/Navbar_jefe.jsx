@@ -44,21 +44,6 @@ const Navbar = () => {
                                 </ul>
                             </li>
 
-                            {/* <!-- Usuarios --> */}
-                            <li className="nav-item dropdown">
-                                <Link id="dropdownSubMenu1" to="#" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false"
-                                    className="nav-link dropdown-toggle"> Usuarios </Link>
-                                <ul aria-labelledby="dropdownSubMenu1"
-                                    className="dropdown-menu border-0 shadow">
-                                    <li><Link to="/InsertarUsuarios" className="dropdown-item">
-                                        Insertar </Link></li>
-                                    <li><Link to="/MostrarUsuarios" className="dropdown-item">
-                                        Mostrar
-                                    </Link></li>
-                                </ul>
-                            </li>
-
                             {/* <!-- Entradas / Salidas --> */}
                             <li className="nav-item dropdown">
                                 <Link id="dropdownSubMenu1" to="#" data-toggle="dropdown"
@@ -71,6 +56,9 @@ const Navbar = () => {
                                     </Link></li>
                                     <li><Link to="/MostrarEYS" className="dropdown-item">
                                         Mostrar
+                                    </Link></li>
+                                    <li><Link to="/MostrarEYSGrafica" className="dropdown-item">
+                                        Informes
                                     </Link></li>
                                 </ul>
                             </li>
