@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Mostrar Bienvenida y Login
 import MostrarBienvenida from './Rutas/MostrarBienvenida';
+import MostrarBienvenida_op from './Rutas/MostrarBienvenida _op';
 import MostrarLogin from './Rutas/MostrarLogin';
 
 // Importar componentes de ruta POST
@@ -26,6 +27,7 @@ const App = () => {
         {/* Rutas POST */}
         <Route path='/' element={<MostrarLogin />} />
         <Route path='/Bienvenida' element={<MostrarBienvenida />} />
+        <Route path='/BienvenidaOP' element={<MostrarBienvenida_op />} />
         <Route path='/InsertarProductos' element={<RutaPostProductos />} />
         <Route path='/InsertarCategorias' element={<RutaPostCategorias />} />
         <Route path='/InsertarUsuarios' element={<RutaPostUsuarios />} />

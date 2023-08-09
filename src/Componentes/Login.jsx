@@ -5,6 +5,7 @@ const Login = () => {
   const [users, setUsers] = useState([]);
   const [usuario, setUsuario] = useState('');
   const [contrasena, setContrasena] = useState('');
+  const [puesto, setpuesto] = useState('');
   const [siguiente, setSiguiente] = useState('');
   const [error, setError] = useState('');
 
@@ -18,11 +19,12 @@ const Login = () => {
       .then(data => {
         const extractedUsers = data.map(item => ({
           usuario: item.usuario,
-          contrasena: item.contrasena
+          contrasena: item.contrasena,
+          puesto: item.puesto
         }));
-        setUsers(extractedUsers);
+        setUsers(extractedUsers);       
         // Imprimir en la consola
-        console.log("Que mira bobo, andate pasha boludo");
+        console.log("Que mira bobo, andate pasha boludo", extractedUsers);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -37,7 +39,14 @@ const Login = () => {
   const handleLogin = () => {
     const foundUser = users.find(user => user.usuario === usuario && user.contrasena === contrasena);
     if (foundUser) {
-      setSiguiente('/Bienvenida');
+      if(foundUser.puesto === "Administrador"){
+        setSiguiente('/Bienvenida');
+      }else{
+        
+      }
+      console.log(puesto);
+      
+      
     } else {
       setError('Usuario o contraseña incorrectos');
     }

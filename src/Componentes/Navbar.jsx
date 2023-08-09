@@ -72,9 +72,6 @@ const Navbar = () => {
                                     <li><Link to="/MostrarEYS" className="dropdown-item">
                                         Mostrar
                                     </Link></li>
-                                    <li><Link to="/MostrarEYSGrafica" className="dropdown-item">
-                                        Informes
-                                    </Link></li>
                                 </ul>
                             </li>
                         </ul>
