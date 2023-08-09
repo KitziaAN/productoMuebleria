@@ -64,18 +64,18 @@ const MostrarCategorias = () => {
 
   return (
     <>
-        <div class="wrapper">
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">Tabla de Categorias </h3>
+        <div className="wrapper">
+            <section className="content">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h3 className="card-title">Tabla de Categorias </h3>
                                 </div>
-                                <div class="card-body">
+                                <div className="card-body">
                                     <table id="example1"
-                                        class="table table-bordered table-striped">
+                                        className="table table-bordered table-striped">
                                         <thead>
                                             {/* Datos de la Tabla */}
                                             <tr>

@@ -3,132 +3,138 @@ import { useState, useEffect } from 'react';
 
 
 const MostrarUsuarios = () => {
-    const [data, setData] = useState([]);
-    const [editingUser, setEditingUser] = useState(null);
-    const [isEditing, setIsEditing] = useState(false);
 
-    const getUsuarios=()=>{
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow',
-        };
-        fetch("http://localhost/muebleria-backend/index.php/Api/Usuarios", requestOptions)
-        .then(response => response.json())
-        .then(data => {
+  // Inicia parte de consumo de la API
+  const [data, setData] = useState([]);
+  const [editingUser, setEditingUser] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const getUsuarios = () => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+    };
+    fetch("http://localhost/muebleria-backend/index.php/Api/Usuarios", requestOptions)
+      .then(response => response.json())
+      .then(data => {
         setData(data);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-    }
+  }
 
-    const openEditForm = (user) => {
-        setEditingUser(user);
-        setIsEditing(true);
+  const openEditForm = (user) => {
+    setEditingUser(user);
+    setIsEditing(true);
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    const requestOptions = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(editingUser),
     };
 
-    const handleUpdate = (e) => {
-        e.preventDefault();
-    
-        const requestOptions = {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(editingUser),
-        };
-    
-        fetch(`http://localhost/muebleria-backend/index.php/Api/Usuarios/${editingUser.codigo_usuario}`, requestOptions)
-          .then((response) => {
-            if (response.ok) {
-              setIsEditing(false);
-              getUsuarios(); // Actualizar la lista de usuarios
-            }
-          })
-          .catch((error) => console.log('Error al actualizar el usuario:', error));
+    fetch(`http://localhost/muebleria-backend/index.php/Api/Usuarios/${editingUser.clave_empleado}`, requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          setIsEditing(false);
+          getUsuarios(); // Actualizar la lista de usuarios
+        }
+      })
+      .catch((error) => console.log('Error al actualizar el usuario:', error));
+  };
+
+  const deleteUsuarios = (id) => {
+    var requestOptions = {
+      header: { 'Content-Type': 'application/json; charset=utf-8' },
+      method: 'DELETE',
+      redirect: 'follow',
     };
 
-    const deleteUsuarios= (id) => {
-        var requestOptions = {
-            header:{'Content-Type': 'application/json; charset=utf-8'},
-            method: 'DELETE',
-            redirect: 'follow',
-        };
-          
-          fetch(`http://localhost/muebleria-backend/index.php/Api/Usuarios/${id}`, requestOptions)
-            .then(response => {if(response.ok){getUsuarios();}})
-            .then(result => console.log(result))
-            .catch(error => console.log('Tienes un error al borrar: ', error));
-    };
-    
-    useEffect(()=>{
-        getUsuarios();
-    }, []);  
+    fetch(`http://localhost/muebleria-backend/index.php/Api/Usuarios/${id}`, requestOptions)
+      .then(response => { if (response.ok) { getUsuarios(); } })
+      .then(result => console.log(result))
+      .catch(error => console.log('Tienes un error al borrar: ', error));
+  };
+
+  useEffect(() => {
+    getUsuarios();
+  }, []);
+
+
+  // Termina parte de consumo de la API
 
   return (
     <>
-        <div class="wrapper">
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">Tabla de Usuarios </h3>
-                                </div>
-                                <div class="card-body">
-                                    <table id="example1"
-                                        class="table table-bordered table-striped">
-                                        <thead>
-                                            {/* Datos de la Tabla */}
-                                            <tr>
-                                                <th>Codigo Empleado</th>
-                                                <th>Nombre</th>
-                                                <th>Puesto</th>
-                                                <th>Fotografía</th>
-                                                <th>Usuario</th>
-                                                <th>Contraseña</th>
-                                                <th>Fecha de Entrada</th>
-                                                <th>Opciones</th>         
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {/* Datos dentro de la Tabla */}
-                                            {data.map(item =>(
-                                                <tr key={item.clave_empleado}>
-                                                    <td>{item.clave_empleado}</td>
-                                                    <td>{item.nombre}</td>
-                                                    <td>{item.puesto}</td>
-                                                    <td><img src={item.fotografia+"BASE64_STRING"}></img></td>
-                                                    <td>{item.usuario}</td>
-                                                    <td>{item.contrasena}</td>
-                                                    <td>{item.fecha_ingreso}</td>
-                                                    <td>
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-outline-dark mr-2"
-                                                            onClick={() => openEditForm(item)}
-                                                        >
-                                                            Editar
-                                                        </button>
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-outline-dark"
-                                                            onClick={() => deleteUsuarios(item.codigo_usuario)}
-                                                        >
-                                                            Borrar
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            ))}              
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <div className="wrapper">
+        <section className="content">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-12">
+                <div className="card">
+                  <div className="card-header">
+                    <h3 className="card-title">Tabla de Usuarios </h3>
+                  </div>
+                  <div className="card-body">
+                    <table id="example1"
+                      className="table table-bordered table-striped">
+                      <thead>
+                        {/* Datos de la Tabla */}
+                        <tr>
+                          <th>Clave Empleado</th>
+                          <th>Nombre</th>
+                          <th>Puesto</th>
+                          <th>Usuario</th>
+                          <th>Contraseña</th>
+                          <th>Fecha de Ingreso</th>
+                          <th>Fotografía</th>
+                          <th>Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* Datos dentro de la Tabla */}
+                        {data.map(item => (
+                          <tr key={item.clave_empleado}>
+                            <td>{item.clave_empleado}</td>
+                            <td>{item.nombre}</td>
+                            <td>{item.puesto}</td>
+                            <td>{item.usuario}</td>
+                            <td>{item.contrasena}</td>
+                            <td>{item.fecha_ingreso}</td>
+                            <td><img src={item.fotografia}></img></td>
+                            <td>
+                              <button
+                                type="button"
+                                className="btn btn-outline-dark mr-2"
+                                onClick={() => openEditForm(item)}
+                              >
+                                Editar
+                              </button>
+                              <button
+                                type="button"
+                                className="btn btn-outline-dark"
+                                onClick={() => deleteUsuarios(item.clave_empleado)}
+                              >
+                                Borrar
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                        
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-            </section>
-        </div>
-        {isEditing && editingUser && (
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      {isEditing && editingUser && (
         <div className="container-fluid mt-3">
           <div className="row justify-content-center">
             <div className="col-md-6">
