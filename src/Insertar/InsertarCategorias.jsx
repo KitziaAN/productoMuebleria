@@ -29,39 +29,39 @@ const InsertarCategorias = () => {
 
   return (
     <>
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-md-6 mt-4">
-            <div class="card card-dark">
+      <div className="container-fluid">
+        <div className="row justify-content-center">
+          <div className="col-md-6 mt-4">
+            <div className="card card-dark">
 
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-clipboard"></i>&nbsp; Agrega la información de Productos
+              <div className="card-header">
+                <h3 className="card-title">
+                  <i className="fas fa-clipboard"></i>&nbsp; Agrega la información de Productos
                 </h3>
               </div>
 
               <form>
-                <div class="card-body">
+                <div className="card-body">
                   
                   {/* Tipo */}
-                  <div class="form-group">
-                    <label for="Tipo">Tipo</label>
-                    <input type="text" class="form-control" placeholder="Tipo" 
+                  <div className="form-group">
+                    <label htmlFor="Tipo">Tipo</label>
+                    <input type="text" className="form-control" placeholder="Tipo" 
                     value={ tipo } onChange={ event => setTipo (event.target.value )} />
                   </div>
                   {/*  */}
 
                   {/* Fecha de alta */}
-                  <div class="form-group">
-                    <label for="Fechaalta">Fecha de alta</label>
-                    <input type="date" class="form-control" placeholder="Fecha de alta" 
+                  <div className="form-group">
+                    <label htmlFor="Fechaalta">Fecha de alta</label>
+                    <input type="date" className="form-control" placeholder="Fecha de alta" 
                     value={ fecha } onChange={ event => setFecha (event.target.value )} />
                   </div>
                   {/*  */}
 
                 </div>
-                <div class="card-footer">
-                  <button class="btn btn-success" onClick={ () => handleAdd() }> Confirmar </button>
+                <div className="card-footer">
+                  <button className="btn btn-success" onClick={ () => handleAdd() }> Confirmar </button>
                 </div>
               </form>
             </div>
