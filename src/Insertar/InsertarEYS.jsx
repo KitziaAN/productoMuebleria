@@ -42,7 +42,7 @@ const InsertarEYS = () => {
                 <div className="card-body">
                   {/* Fecha de Entrada */}
                   <div className="form-group">
-                    <label for="CodigoProducto">Codigo Producto</label>
+                    <label htmlFor="CodigoProducto">Codigo Producto</label>
                     <input type="text" className="form-control" placeholder="Código producto" 
                     value={ codigoProducto } onChange={ event => setCodigoProducto (event.target.value )}/>
                   </div>
@@ -50,7 +50,7 @@ const InsertarEYS = () => {
 
                   {/* Fecha de Salida */}
                   <div className="form-group">
-                    <label for="FechaSalidaEntrada">Fecha Salida/Entrada</label>
+                    <label htmlFor="FechaSalidaEntrada">Fecha Salida/Entrada</label>
                     <input type="date" className="form-control" placeholder="Fecha de Salida"
                     value={ fecha } onChange={ event => setFecha (event.target.value )} />
                   </div>

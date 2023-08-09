@@ -63,7 +63,7 @@ const InsertarUsuarios = () => {
                 <div className="card-body">
                   {/* Nombre */}
                   <div className="form-group">
-                    <label for="Nombre">Nombre</label>
+                    <label htmlFor="Nombre">Nombre</label>
                     <input type="text" className="form-control" placeholder="Nombre"
                     value={ nombre } onChange={ event => setNombre (event.target.value )} />
                   </div>
@@ -71,7 +71,7 @@ const InsertarUsuarios = () => {
 
                   {/* Puesto */}
                   <div className="form-group">
-                    <label for="Puesto">Puesto</label>
+                    <label htmlFor="Puesto">Puesto</label>
                     <input type="text" className="form-control" id="Puesto" placeholder="Puesto"
                     value={ puesto } onChange={ event => setPuesto (event.target.value )} />
                   </div>
@@ -83,7 +83,7 @@ const InsertarUsuarios = () => {
                     <div className="input-group">
                       <div className="custom-file">
                         <input type="file" accept="image/*" className="custom-file-input" onChange={handleImage} />
-                        <label className="custom-file-label" for="exampleInputFile">Selecciona la imagen del producto </label>
+                        <label className="custom-file-label" htmlFor="exampleInputFile">Selecciona la imagen del producto </label>
                       </div>
                     </div>
                   </div>
@@ -91,7 +91,7 @@ const InsertarUsuarios = () => {
 
                   {/* Usuario */}
                   <div className="form-group">
-                    <label for="Usuario">Usuario</label>
+                    <label htmlFor="Usuario">Usuario</label>
                     <input type="text" className="form-control" id="Usuario" placeholder="Usuario"
                     value={ usuario } onChange={ event => setUsuario (event.target.value )} />
                   </div>
@@ -99,7 +99,7 @@ const InsertarUsuarios = () => {
 
                   {/* Contraseña */}
                   <div className="form-group">
-                    <label for="Password">Contraseña</label>
+                    <label htmlFor="Password">Contraseña</label>
                     <input type="password" className="form-control" id="Password" placeholder="Contraseña" 
                     value={ contrasena } onChange={ event => setContrasena (event.target.value )} />
                     </div>
@@ -107,7 +107,7 @@ const InsertarUsuarios = () => {
 
                   {/* Fecha de Entrada */}
                   <div className="form-group">
-                    <label for="FechaEntrada">Fecha de Entrada</label>
+                    <label htmlFor="FechaEntrada">Fecha de Entrada</label>
                     <input type="date" className="form-control" id="FechaEntrada" placeholder="Fecha de Entrada"
                     value={ fecha } onChange={ event => setFecha (event.target.value )} />
                     </div>

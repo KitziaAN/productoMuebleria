@@ -76,7 +76,7 @@ const InsertarProductos = () => {
                 <div className="card-body">
                   {/* Codigo Categoria */}
                   <div className="form-group">
-                    <label for="CodigoC">Codigo Categoria</label>
+                    <label htmlFor="CodigoC">Codigo Categoria</label>
                     <input type="number" className="form-control" placeholder="Codigo Categoria" 
                     value={ codigoCategoria } onChange={ event => setcodigoCategoria (event.target.value )} />
                     </div>
@@ -84,7 +84,7 @@ const InsertarProductos = () => {
 
                   {/* Marca */}
                   <div className="form-group">
-                    <label for="Marca">Marca</label>
+                    <label htmlFor="Marca">Marca</label>
                     <input type="text" className="form-control" id="Marca" placeholder="Marca del Producto" 
                     value={ marca } onChange={ event => setMarca (event.target.value )} />
                     </div>
@@ -92,7 +92,7 @@ const InsertarProductos = () => {
 
                   {/* Nombre */}
                   <div className="form-group">
-                    <label for="Nombre">Nombre</label>
+                    <label htmlFor="Nombre">Nombre</label>
                     <input type="text" className="form-control" id="Nombre" placeholder="Nombre del Producto" 
                     value={ nombre } onChange={ event => setNombre (event.target.value )} />
                     </div>
@@ -100,7 +100,7 @@ const InsertarProductos = () => {
 
                   {/* Piezas */}
                   <div className="form-group">
-                    <label for="Piezas">Piezas</label>
+                    <label htmlFor="Piezas">Piezas</label>
                     <input type="number" className="form-control" id="Piezas" placeholder="Numero de Piezas" 
                     value={ piezas } onChange={ event => setPiezas (event.target.value )} />
                     </div>
@@ -108,7 +108,7 @@ const InsertarProductos = () => {
 
                   {/* Color */}
                   <div className="form-group">
-                    <label for="Color">Color</label>
+                    <label htmlFor="Color">Color</label>
                     <input type="text" className="form-control" id="Color" placeholder="Color" 
                     value={ color } onChange={ event => setColor (event.target.value )} />
                     </div>
@@ -116,7 +116,7 @@ const InsertarProductos = () => {
 
                   {/* Material */}
                   <div className="form-group">
-                    <label for="Material">Material</label>
+                    <label htmlFor="Material">Material</label>
                     <input type="text" className="form-control" id="Material" placeholder="Material"
                     value={ material } onChange={ event => setMaterial (event.target.value )} />
                     </div>
@@ -124,7 +124,7 @@ const InsertarProductos = () => {
 
                   {/* Unidades */}
                   <div className="form-group">
-                    <label for="Unidades">Unidades</label>
+                    <label htmlFor="Unidades">Unidades</label>
                     <input type="text" className="form-control" id="Unidades" placeholder="Unidades" 
                     value={ unidades } onChange={ event => setUnidades (event.target.value )} />
                     </div>
@@ -132,7 +132,7 @@ const InsertarProductos = () => {
 
                   {/* Dimensiones */}
                   <div className="form-group">
-                    <label for="Dimensiones">Dimensiones</label>
+                    <label htmlFor="Dimensiones">Dimensiones</label>
                     <input type="text" className="form-control" id="Dimensiones" placeholder="Dimensiones" 
                     value={ dimensiones } onChange={ event => setDimensiones (event.target.value )} />
                     </div>
@@ -140,7 +140,7 @@ const InsertarProductos = () => {
 
                   {/* Precio */}
                   <div className="form-group">
-                    <label for="Precio">Precio</label>
+                    <label htmlFor="Precio">Precio</label>
                     <input type="number" className="form-control" id="Precio" placeholder="Precio"
                     value={ precio } onChange={ event => setPrecio (event.target.value )} />
                     </div>
@@ -148,7 +148,7 @@ const InsertarProductos = () => {
 
                   {/* Descripcion */}
                   <div className="form-group">
-                    <label for="Descripcion">Descripcion</label>
+                    <label htmlFor="Descripcion">Descripcion</label>
                     <input type="text" className="form-control" id="Descripcion" placeholder="Descripcion" 
                     value={ descripcion } onChange={ event => setDescripcion (event.target.value )} />
                     </div>
@@ -156,7 +156,7 @@ const InsertarProductos = () => {
 
                   {/* Fecha de alta */}
                   <div className="form-group">
-                    <label for="Fechaalta">Fecha de alta</label>
+                    <label htmlFor="Fechaalta">Fecha de alta</label>
                     <input type="date" className="form-control" id="Fechaalta" placeholder="Fecha de alta" 
                     value={ fecha } onChange={ event => setfecha (event.target.value )} />
                     </div>
@@ -168,7 +168,7 @@ const InsertarProductos = () => {
                     <div className="input-group">
                       <div className="custom-file">
                         <input type="file" accept="image/*" className="custom-file-input" onChange={handleImage} />
-                    <label className="custom-file-label" for="exampleInputFile">Selecciona la imagen del usuario </label>
+                    <label className="custom-file-label" htmlFor="exampleInputFile">Selecciona la imagen del usuario </label>
                       </div>
                     </div>
                   </div>
