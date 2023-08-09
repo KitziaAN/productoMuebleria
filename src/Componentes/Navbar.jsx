@@ -72,6 +72,9 @@ const Navbar = () => {
                                     <li><Link to="/MostrarEYS" className="dropdown-item">
                                         Mostrar
                                     </Link></li>
+                                    <li><Link to="/MostrarEYSGrafica" className="dropdown-item">
+                                        Informes
+                                    </Link></li>
                                 </ul>
                             </li>
                         </ul>
@@ -79,7 +82,7 @@ const Navbar = () => {
                         {/* <!-- Boton Cerrar Sesion --> */}
                         <ul className="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                             <li className="nav-item">
-                                <Link to="/MostrarLogin">
+                                <Link to="/">
                                     <i className="btn btn-dark">Cerrar Sesion</i>
                                 </Link>
                             </li>

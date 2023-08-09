@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar_op = () => {
     return (
         <>
             {/* Navbar */}
@@ -44,11 +44,12 @@ const Navbar = () => {
                                 </ul>
                             </li>
 
-                            
+                        </ul>
+
                         {/* <!-- Boton Cerrar Sesion --> */}
                         <ul className="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                             <li className="nav-item">
-                                <Link to="/MostrarLogin">
+                                <Link to="/">
                                     <i className="btn btn-dark">Cerrar Sesion</i>
                                 </Link>
                             </li>
@@ -62,4 +63,4 @@ const Navbar = () => {
     );
 }
 
-export default Navbar
+export default Navbar_op

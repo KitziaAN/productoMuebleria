@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar_gerencia = () => {
     return (
         <>
             {/* Navbar */}
@@ -71,4 +71,4 @@ const Navbar = () => {
     );
 }
 
-export default Navbar
+export default Navbar_gerencia;
