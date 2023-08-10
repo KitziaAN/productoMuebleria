@@ -1,15 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-
-// Mostrar Bienvenida y Login
-import MostrarBienvenida from './Rutas/MostrarBienvenida';
-import MostrarBienvenida_op from './Rutas/MostrarBienvenida _op';
-import MostrarLogin from './Rutas/MostrarLogin';
-
 // Login
 import MostrarLogin from './Rutas/Login/MostrarLogin';
-
 
 // Privilegios
 import Administrador from './Priv/Administrador';
@@ -51,9 +44,6 @@ import RutaViewUsuariosEliminacion from './Rutas/Eliminar/RutaViewUsuariosElimin
 const App = () => {
   return (
     <BrowserRouter>
-
-
-
       <Routes>
 
         <Route path='/' element={<MostrarLogin />} />
@@ -100,7 +90,6 @@ const App = () => {
         <Route path='/MostrarCategoriasEliminacion' element={<RutaViewCategoriasEliminacion />} />
         <Route path='/MostrarUsuariosEliminacion' element={<RutaViewUsuariosEliminacion />} />
         {/* Termina Eliminacion */}
-
 
         
 

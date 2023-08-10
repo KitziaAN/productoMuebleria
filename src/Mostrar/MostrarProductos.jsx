@@ -95,11 +95,7 @@ const MostrarProductos = () => {
                           <th>Precio</th>
                           <th>Descripcion</th>
                           <th>Fecha de alta</th>
-<<<<<<< HEAD
-                          <th>Fotografías</th>
-=======
                           {/* <th>Fotografías</th> */}
->>>>>>> erick
                           <th>Opciones</th>
                         </tr>
                       </thead>
@@ -120,11 +116,7 @@ const MostrarProductos = () => {
                             <td>{item.precio}</td>
                             <td>{item.descripcion}</td>
                             <td>{item.fecha_alta}</td>
-<<<<<<< HEAD
-                            <td><img src={item.fotografias}></img></td>
-=======
                             {/* <td><img src={item.fotografias}></img></td> */}
->>>>>>> erick
                             <td>
                               <button
                                 type="button"

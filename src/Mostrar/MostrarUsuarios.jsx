@@ -91,11 +91,7 @@ const MostrarUsuarios = () => {
                           <th>Usuario</th>
                           <th>Contraseña</th>
                           <th>Fecha de Ingreso</th>
-<<<<<<< HEAD
-                          <th>Fotografía</th>
-=======
                           {/* <th>Fotografía</th> */}
->>>>>>> erick
                           <th>Opciones</th>
                         </tr>
                       </thead>
@@ -109,11 +105,7 @@ const MostrarUsuarios = () => {
                             <td>{item.usuario}</td>
                             <td>{item.contrasena}</td>
                             <td>{item.fecha_ingreso}</td>
-<<<<<<< HEAD
-                            <td><img src={item.fotografia}></img></td>
-=======
                             {/* <td><img src={item.fotografia}></img></td> */}
->>>>>>> erick
                             <td>
                               <button
                                 type="button"

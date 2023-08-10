@@ -2,19 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 const Login = () => {
 
-<<<<<<< HEAD
-  const [users, setUsers] = useState([]);
-  const [usuario, setUsuario] = useState('');
-  const [contrasena, setContrasena] = useState('');
-  const [puesto, setpuesto] = useState('');
-=======
   // Parte de Usuarios
   const [users, setUsers] = useState([]);
   const [usuario, setUsuario] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [puesto, setPuesto] = useState('');
 
->>>>>>> erick
   const [siguiente, setSiguiente] = useState('');
   const [error, setError] = useState('');
 
@@ -30,19 +23,12 @@ const Login = () => {
           usuario: item.usuario,
           contrasena: item.contrasena,
           puesto: item.puesto
-<<<<<<< HEAD
-        }));
-        setUsers(extractedUsers);       
-        // Imprimir en la consola
-        console.log("Que mira bobo, andate pasha boludo", extractedUsers);
-=======
 
         }));
         setUsers(extractedUsers);
         // Imprimir en la consola
         console.log("Que mira bobo, andate pasha boludo");
 
->>>>>>> erick
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -57,21 +43,6 @@ const Login = () => {
   const handleLogin = () => {
     const foundUser = users.find(user => user.usuario === usuario && user.contrasena === contrasena);
     if (foundUser) {
-<<<<<<< HEAD
-      if(foundUser.puesto === "Administrador"){
-        setSiguiente('/Bienvenida');
-      }else{
-        
-      }
-      console.log(puesto);
-      
-      
-    } else {
-      setError('Usuario o contraseña incorrectos');
-    }
-  };
-
-=======
       switch (foundUser.puesto) {
         // Tendra acceso a toda la pagina (Lopez)
         case "Administrador":
@@ -107,7 +78,6 @@ const Login = () => {
     }
   };
 
->>>>>>> erick
   useEffect(() => {
     if (siguiente) {
       window.location.href = siguiente;
