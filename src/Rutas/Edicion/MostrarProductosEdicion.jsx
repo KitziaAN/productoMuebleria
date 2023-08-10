@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const MostrarProductos = () => {
-
-  // Inicia parte de consumo de la API
+const MostrarProductosEdicion = () => {
   const [data, setData] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -20,7 +18,6 @@ const MostrarProductos = () => {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-
   }
 
   const openEditForm = (product) => {
@@ -47,25 +44,10 @@ const MostrarProductos = () => {
       .catch((error) => console.log('Error al actualizar el producto:', error));
   };
 
-  const deleteProductos = (id) => {
-    var requestOptions = {
-      header: { 'Content-Type': 'application/json; charset=utf-8' },
-      method: 'DELETE',
-      redirect: 'follow',
-    };
-
-    fetch(`http://localhost/muebleria-backend/index.php/Api/Productos/${id}`, requestOptions)
-      .then(response => { if (response.ok) { getProductos(); } })
-      .then(result => console.log(result))
-      .catch(error => console.log('Tienes un error al borrar: ', error));
-  };
-
   useEffect(() => {
     getProductos();
   }, []);
-  // Termina parte de consumo de la API
 
-  // Muestra la tabla
   return (
     <>
       <div className="wrapper">
@@ -78,10 +60,8 @@ const MostrarProductos = () => {
                     <h3 className="card-title">Tabla de Productos </h3>
                   </div>
                   <div className="card-body">
-                    <table id="example1"
-                      className="table table-bordered table-striped">
+                    <table id="example1" className="table table-bordered table-striped">
                       <thead>
-                        {/* Datos de la Tabla */}
                         <tr>
                           <th>C.Producto</th>
                           <th>C.Categoria</th>
@@ -95,17 +75,10 @@ const MostrarProductos = () => {
                           <th>Precio</th>
                           <th>Descripcion</th>
                           <th>Fecha de alta</th>
-<<<<<<< HEAD
-                          <th>Fotografías</th>
-=======
-                          {/* <th>Fotografías</th> */}
->>>>>>> erick
                           <th>Opciones</th>
                         </tr>
                       </thead>
-
                       <tbody>
-                        {/* Datos dentro de la Tabla */}
                         {data.map(item => (
                           <tr key={item.codigo_producto}>
                             <td>{item.codigo_producto}</td>
@@ -120,11 +93,6 @@ const MostrarProductos = () => {
                             <td>{item.precio}</td>
                             <td>{item.descripcion}</td>
                             <td>{item.fecha_alta}</td>
-<<<<<<< HEAD
-                            <td><img src={item.fotografias}></img></td>
-=======
-                            {/* <td><img src={item.fotografias}></img></td> */}
->>>>>>> erick
                             <td>
                               <button
                                 type="button"
@@ -133,17 +101,9 @@ const MostrarProductos = () => {
                               >
                                 Editar
                               </button>
-                              <button
-                                type="button"
-                                className="btn btn-outline-dark"
-                                onClick={() => deleteProductos(item.codigo_producto)}
-                              >
-                                Borrar
-                              </button>
                             </td>
                           </tr>
                         ))}
-
                       </tbody>
                     </table>
                   </div>
@@ -153,7 +113,6 @@ const MostrarProductos = () => {
           </div>
         </section>
       </div>
-      {/* Formulario de edición */}
       {isEditing && editingProduct && (
         <div className="container-fluid mt-3">
           <div className="row justify-content-center">
@@ -167,7 +126,6 @@ const MostrarProductos = () => {
                 <div className="card-body">
                   <form onSubmit={handleUpdate}>
                     <div className="form-group">
-
                       <label htmlFor="CodigoP">Codigo Producto</label>
                       <input
                         type="number"
@@ -178,7 +136,6 @@ const MostrarProductos = () => {
                         disabled
                       />
                     </div>
-
                     <div className="form-group">
                       <label htmlFor="CodigoC">Codigo Categoria</label>
                       <input
@@ -190,8 +147,6 @@ const MostrarProductos = () => {
                         disabled
                       />
                     </div>
-
-                    {/* Nombre */}
                     <div className="form-group">
                       <label htmlFor="Nombre">Nombre</label>
                       <input
@@ -203,8 +158,6 @@ const MostrarProductos = () => {
                         onChange={(e) => setEditingProduct({ ...editingProduct, nombre: e.target.value })}
                       />
                     </div>
-
-                    {/* Marca */}
                     <div className="form-group">
                       <label htmlFor="Marca">Marca</label>
                       <input
@@ -216,8 +169,6 @@ const MostrarProductos = () => {
                         onChange={(e) => setEditingProduct({ ...editingProduct, marca: e.target.value })}
                       />
                     </div>
-
-                    {/* Piezas */}
                     <div className="form-group">
                       <label htmlFor="Piezas">Piezas</label>
                       <input
@@ -229,8 +180,6 @@ const MostrarProductos = () => {
                         onChange={(e) => setEditingProduct({ ...editingProduct, piezas: e.target.value })}
                       />
                     </div>
-
-                    {/* Color */}
                     <div className="form-group">
                       <label htmlFor="Color">Color</label>
                       <input
@@ -242,8 +191,6 @@ const MostrarProductos = () => {
                         onChange={(e) => setEditingProduct({ ...editingProduct, color: e.target.value })}
                       />
                     </div>
-
-                    {/* Material */}
                     <div className="form-group">
                       <label htmlFor="Material">Material</label>
                       <input
@@ -255,8 +202,6 @@ const MostrarProductos = () => {
                         onChange={(e) => setEditingProduct({ ...editingProduct, material: e.target.value })}
                       />
                     </div>
-
-                    {/* Unidades */}
                     <div className="form-group">
                       <label htmlFor="Unidades">Unidades</label>
                       <input
@@ -268,8 +213,6 @@ const MostrarProductos = () => {
                         onChange={(e) => setEditingProduct({ ...editingProduct, unidades: e.target.value })}
                       />
                     </div>
-
-                    {/* Dimensiones */}
                     <div className="form-group">
                       <label htmlFor="Dimensiones">Dimensiones</label>
                       <input
@@ -281,8 +224,6 @@ const MostrarProductos = () => {
                         onChange={(e) => setEditingProduct({ ...editingProduct, dimensiones: e.target.value })}
                       />
                     </div>
-
-                    {/* Precio */}
                     <div className="form-group">
                       <label htmlFor="Precio">Precio</label>
                       <input
@@ -294,8 +235,6 @@ const MostrarProductos = () => {
                         onChange={(e) => setEditingProduct({ ...editingProduct, precio: e.target.value })}
                       />
                     </div>
-
-                    {/* Descripcion */}
                     <div className="form-group">
                       <label htmlFor="Descripcion">Descripcion</label>
                       <input
@@ -307,8 +246,6 @@ const MostrarProductos = () => {
                         onChange={(e) => setEditingProduct({ ...editingProduct, descripcion: e.target.value })}
                       />
                     </div>
-
-                    {/* Fecha de alta */}
                     <div className="form-group">
                       <label htmlFor="Fechaalta">Fecha de alta</label>
                       <input
@@ -320,12 +257,10 @@ const MostrarProductos = () => {
                         onChange={(e) => setEditingProduct({ ...editingProduct, fecha_alta: e.target.value })}
                       />
                     </div>
-
                     <div className="card-footer">
                       <button type="submit" className="btn btn-success">
                         Guardar Cambios
                       </button>
-                      
                       <button
                         type="button"
                         className="btn btn-secondary ml-2"
@@ -345,4 +280,4 @@ const MostrarProductos = () => {
   );
 }
 
-export default MostrarProductos
+export default MostrarProductosEdicion;

@@ -1,10 +1,6 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-
-const MostrarUsuarios = () => {
-
-  // Inicia parte de consumo de la API
+const MostrarUsuariosEdicion = () => {
   const [data, setData] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -48,25 +44,9 @@ const MostrarUsuarios = () => {
       .catch((error) => console.log('Error al actualizar el usuario:', error));
   };
 
-  const deleteUsuarios = (id) => {
-    var requestOptions = {
-      header: { 'Content-Type': 'application/json; charset=utf-8' },
-      method: 'DELETE',
-      redirect: 'follow',
-    };
-
-    fetch(`http://localhost/muebleria-backend/index.php/Api/Usuarios/${id}`, requestOptions)
-      .then(response => { if (response.ok) { getUsuarios(); } })
-      .then(result => console.log(result))
-      .catch(error => console.log('Tienes un error al borrar: ', error));
-  };
-
   useEffect(() => {
     getUsuarios();
   }, []);
-
-
-  // Termina parte de consumo de la API
 
   return (
     <>
@@ -80,10 +60,8 @@ const MostrarUsuarios = () => {
                     <h3 className="card-title">Tabla de Usuarios </h3>
                   </div>
                   <div className="card-body">
-                    <table id="example1"
-                      className="table table-bordered table-striped">
+                    <table id="example1" className="table table-bordered table-striped">
                       <thead>
-                        {/* Datos de la Tabla */}
                         <tr>
                           <th>Clave Empleado</th>
                           <th>Nombre</th>
@@ -91,16 +69,10 @@ const MostrarUsuarios = () => {
                           <th>Usuario</th>
                           <th>Contraseña</th>
                           <th>Fecha de Ingreso</th>
-<<<<<<< HEAD
-                          <th>Fotografía</th>
-=======
-                          {/* <th>Fotografía</th> */}
->>>>>>> erick
                           <th>Opciones</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {/* Datos dentro de la Tabla */}
                         {data.map(item => (
                           <tr key={item.clave_empleado}>
                             <td>{item.clave_empleado}</td>
@@ -109,11 +81,6 @@ const MostrarUsuarios = () => {
                             <td>{item.usuario}</td>
                             <td>{item.contrasena}</td>
                             <td>{item.fecha_ingreso}</td>
-<<<<<<< HEAD
-                            <td><img src={item.fotografia}></img></td>
-=======
-                            {/* <td><img src={item.fotografia}></img></td> */}
->>>>>>> erick
                             <td>
                               <button
                                 type="button"
@@ -122,17 +89,9 @@ const MostrarUsuarios = () => {
                               >
                                 Editar
                               </button>
-                              <button
-                                type="button"
-                                className="btn btn-outline-dark"
-                                onClick={() => deleteUsuarios(item.clave_empleado)}
-                              >
-                                Borrar
-                              </button>
                             </td>
                           </tr>
                         ))}
-                        
                       </tbody>
                     </table>
                   </div>
@@ -165,8 +124,6 @@ const MostrarUsuarios = () => {
                         disabled
                       />
                     </div>
-
-                    {/* Nombre */}
                     <div className="form-group">
                       <label htmlFor="Nombre">Nombre</label>
                       <input
@@ -178,9 +135,6 @@ const MostrarUsuarios = () => {
                         onChange={(e) => setEditingUser({ ...editingUser, nombre: e.target.value })}
                       />
                     </div>
-                    {/*  */}
-
-                    {/* Puesto */}
                     <div className="form-group">
                       <label htmlFor="Puesto">Puesto</label>
                       <input
@@ -192,9 +146,6 @@ const MostrarUsuarios = () => {
                         onChange={(e) => setEditingUser({ ...editingUser, puesto: e.target.value })}
                       />
                     </div>
-                    {/*  */}
-
-                    {/* Usuario */}
                     <div className="form-group">
                       <label htmlFor="Usuario">Usuario</label>
                       <input
@@ -206,9 +157,6 @@ const MostrarUsuarios = () => {
                         onChange={(e) => setEditingUser({ ...editingUser, usuario: e.target.value })}
                       />
                     </div>
-                    {/*  */}
-
-                    {/* Contraseña */}
                     <div className="form-group">
                       <label htmlFor="Password">Contraseña</label>
                       <input
@@ -220,9 +168,6 @@ const MostrarUsuarios = () => {
                         onChange={(e) => setEditingUser({ ...editingUser, contrasena: e.target.value })}
                       />
                     </div>
-                    {/*  */}
-
-                    {/* Fecha de Entrada */}
                     <div className="form-group">
                       <label htmlFor="FechaEntrada">Fecha de Entrada</label>
                       <input
@@ -234,9 +179,6 @@ const MostrarUsuarios = () => {
                         onChange={(e) => setEditingUser({ ...editingUser, fecha_ingreso: e.target.value })}
                       />
                     </div>
-                    {/*  */}
-
-
                     <div className="card-footer">
                       <button type="submit" className="btn btn-success">
                         Guardar Cambios
@@ -260,4 +202,4 @@ const MostrarUsuarios = () => {
   );
 }
 
-export default MostrarUsuarios
+export default MostrarUsuariosEdicion;
